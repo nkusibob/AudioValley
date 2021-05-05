@@ -6,9 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http;
-using HttpDeleteAttribute = Microsoft.AspNetCore.Mvc.HttpDeleteAttribute;
-using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
+
+
 
 namespace AudioValley.Controllers
 {
@@ -37,7 +36,17 @@ namespace AudioValley.Controllers
 
         }
         /// <summary>
-        /// Get the list of contact'info including adress
+        /// ADDING CONTACT
+        /// </summary>
+        [HttpPost("contact")]
+        [SwaggerResponse(200, "ADDING CONTACT", typeof(List<Contact>))]
+        public async Task<Contact> AddContact(Contact contact)
+        {
+            return await _contactOperations.AddContactAsync( contact);
+
+        }
+        /// <summary>
+        /// DELETE ACONTACT
         /// </summary>
         [HttpDelete("contact")]
         [SwaggerResponse(200, "removing a contact", typeof(List<Contact>))]

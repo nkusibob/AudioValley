@@ -21,6 +21,7 @@ namespace AudioValley.Business.Models
 
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Key]
         public int ContactId { get; set; }
 
         public virtual ICollection<Adress> Adresses { get; set; }
