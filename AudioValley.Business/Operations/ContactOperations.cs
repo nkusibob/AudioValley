@@ -1,4 +1,5 @@
 ﻿using AudioValley.Business.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -42,8 +43,27 @@ namespace AudioValley.Business.Operations
         {
             if (contact == null)
                 throw new ArgumentNullException(nameof(contact));
+            List<SqlParameter> parms = new List<SqlParameter>
+    {
+        // Create parameter(s)    
+         new SqlParameter { ParameterName = "@Password", Value = contact.Password },
+         new SqlParameter { ParameterName = "@LastName", Value = contact.LastName },
+          new SqlParameter { ParameterName = "@FirstName", Value = contact.FirstName},
 
-            _context.Contacts.Add(contact);
+          new SqlParameter { ParameterName = "@Email", Value = contact.Email },
+          new SqlParameter { ParameterName = "@responseMessage", Value = "out" }
+
+
+
+    };
+
+
+           
+            string sql = "EXEC dbo.addContact @Password ,@Email ,@LastName,@FirstName,@responseMessage";
+
+  
+
+            var result = _context.Contacts.FromSqlRaw<Contact>(sql, parms.ToArray());
             await _context.SaveChangesAsync();
 
             return contact;

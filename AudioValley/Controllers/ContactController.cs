@@ -52,6 +52,7 @@ namespace AudioValley.Controllers
         [SwaggerResponse(200, "removing a contact", typeof(List<Contact>))]
         public bool Delete(Contact contact)
         {
+
             return  _contactOperations.RemoveContactAsync(contact);
 
         }
