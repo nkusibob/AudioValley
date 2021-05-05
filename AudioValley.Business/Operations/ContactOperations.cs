@@ -75,13 +75,14 @@ namespace AudioValley.Business.Operations
 
             return contact;
         }
-        public bool RemoveContactAsync(Contact contact)
+        public bool RemoveContactAsync(int contactID)
         {
-            if (contact == null)
-                throw new ArgumentNullException(nameof(contact));
+            var Contact = _context.Contacts.Where(i => i.ContactId == contactID).FirstOrDefault();
+            if (Contact.ContactId <= 0)
+                throw new ArgumentNullException(nameof(Contact));
 
-            _context.Contacts.Remove(contact);
-             _context.SaveChangesAsync();
+            _context.Remove(Contact);
+            _context.SaveChanges(); 
 
             return true;
         }

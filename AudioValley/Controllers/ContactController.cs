@@ -62,14 +62,14 @@ namespace AudioValley.Controllers
 
         }
         /// <summary>
-        /// DELETE ACONTACT
+        /// DELETE A CONTACT
         /// </summary>
         [HttpDelete("contact")]
         [SwaggerResponse(200, "removing a contact", typeof(List<Contact>))]
-        public bool Delete(Contact contact)
+        public bool Delete(int contactID)
         {
 
-            return  _contactOperations.RemoveContactAsync(contact);
+            return  _contactOperations.RemoveContactAsync(contactID);
 
         }
         #endregion
