@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace AudioValley.Business.Operations
         // ============================================================================================================
 
         #region Get/Search/List
-       
+      
         #endregion
 
         // ============================================================================================================
@@ -33,13 +34,11 @@ namespace AudioValley.Business.Operations
         /// <summary>
         /// Create a new address
         /// </summary>
-        public async Task<Adress> AddAddressAsync(Adress address,Contact contact)
+        public async Task<Adress> AddAddressAsync(Adress address)
         {
             if (address == null)
                 throw new ArgumentNullException(nameof(address));
-            if (contact == null)
-                throw new ArgumentNullException(nameof(contact));
-            address.Contact = contact;
+           
 
             _context.Adresses.Add(address);
             await _context.SaveChangesAsync();

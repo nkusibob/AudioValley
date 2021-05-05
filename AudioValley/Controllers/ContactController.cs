@@ -39,10 +39,12 @@ namespace AudioValley.Controllers
             {
                 contactInfo.Add(new ContactInfo
                 {
-                    Adresses = item.Adresses,
+                    Adresses = _contactOperations.GetByContacIdAsync(item.ContactId),
                     LastName = item.LastName,
                     FirstName = item.FirstName,
-                    Email = item.Email
+                    Email = item.Email,
+                    ContactId = item.ContactId
+
                 });
 
             }

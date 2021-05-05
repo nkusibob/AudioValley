@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AudioValley.Business.Operations
@@ -29,7 +30,13 @@ namespace AudioValley.Business.Operations
                 .Include(s => s.Adresses)
                 .ToListAsync();
         }
+        public List<Adress> GetByContacIdAsync(int contactId)
+        {
+            if (contactId <= 0)
+                throw new ArgumentException(nameof(contactId));
 
+            return _context.Adresses.Where(o => o.ContactId == contactId).ToList();
+        }
         #endregion
 
         // ============================================================================================================

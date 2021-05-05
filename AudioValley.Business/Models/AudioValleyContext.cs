@@ -15,6 +15,7 @@ namespace AudioValley.Business.Models
         public AudioValleyContext(DbContextOptions<AudioValleyContext> options)
             : base(options)
         {
+
         }
 
         public virtual DbSet<Adress> Adresses { get; set; }
@@ -22,7 +23,7 @@ namespace AudioValley.Business.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

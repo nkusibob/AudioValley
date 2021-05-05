@@ -8,6 +8,7 @@ namespace AudioValley.Business.Models
 {
     public partial class Contact
     {
+
         public Contact()
         {
             Adresses = new HashSet<Adress>();

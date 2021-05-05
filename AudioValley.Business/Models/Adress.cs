@@ -12,8 +12,9 @@ namespace AudioValley.Business.Models
         public int Number { get; set; }
         public int ZipCode { get; set; }
         public int CountryCode { get; set; }
-        public int AdressId { get; set; }
         [Key]
+
+        public int AdressId { get; set; }
         public int? ContactId { get; set; }
 
         public virtual Contact Contact { get; set; }

@@ -28,9 +28,9 @@ namespace AudioValley.Controllers
         /// </summary>
         [HttpGet("adress")]
         [SwaggerResponse(200, "adding adress to a contact", typeof(List<Adress>))]
-        public async Task<Adress> AddAdressToContact(Adress adress,Contact contact)
+        public async Task<Adress> AddAdressToContact(Adress adress)
         {
-            return await _adressOperations.AddAddressAsync(adress,contact);
+            return await _adressOperations.AddAddressAsync(adress);
 
         }
         #endregion

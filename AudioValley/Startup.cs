@@ -34,7 +34,10 @@ namespace AudioValley
             services.AddDbContext<AudioValleyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AudioVAlleyDb")));
             services.AddOperationExtensions();
             services.AddServiceExtensions();
-
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Test AudioValley", Version = "v1" });
