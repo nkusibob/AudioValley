@@ -1,14 +1,15 @@
-﻿using System;
+﻿using AudioValley.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-#nullable disable
-
-namespace AudioValley.Business.Models
+namespace AudioValley.ViewModel
 {
-    public partial class Contact
+    public class ContactInfo
     {
-        public Contact()
+        public ContactInfo()
         {
             Adresses = new HashSet<Adress>();
         }
@@ -16,11 +17,9 @@ namespace AudioValley.Business.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        [DataType(DataType.EmailAddress)]
+       
         public string Email { get; set; }
 
-        [DataType(DataType.Password)]
-        public byte[] Password { get; set; }
         [Key]
         public int ContactId { get; set; }
 

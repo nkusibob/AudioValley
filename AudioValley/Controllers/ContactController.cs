@@ -1,5 +1,6 @@
 ﻿using AudioValley.Business.Models;
 using AudioValley.Business.Operations;
+using AudioValley.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -30,9 +31,22 @@ namespace AudioValley.Controllers
         /// </summary>
         [HttpGet("contact")]
         [SwaggerResponse(200, "The list of contact", typeof(List<Contact>))]
-        public async Task <List<Contact>> ListContact()
+        public async Task <List<ContactInfo>> ListContact()
         {
-            return await _contactOperations.FindAllAsync();
+            List<ContactInfo> contactInfo = new List<ContactInfo>();
+            var contact= await _contactOperations.FindAllAsync();
+            foreach (var item in contact)
+            {
+                contactInfo.Add(new ContactInfo
+                {
+                    Adresses = item.Adresses,
+                    LastName = item.LastName,
+                    FirstName = item.FirstName,
+                    Email = item.Email
+                });
+
+            }
+            return contactInfo;
 
         }
         /// <summary>
